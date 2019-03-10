@@ -13,3 +13,6 @@ API Reference
 
 .. autoclass:: mercator.ProtoList
    :members:
+
+.. autoclass:: mercator.SinglePropertyMapping
+   :members:
