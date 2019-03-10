@@ -1,3 +1,4 @@
+dist: xenial
 language: python
 sudo: false
 python:
@@ -10,12 +11,10 @@ matrix:
         - python: 3.6.5
 
 install:
-  - pip install pipenv
-  - pipenv install --dev
-  - pipenv run python setup.py install
+  - pip install -r requirements.txt
 
 # command to run tests
-script: make unit functional
+script: nosetests tests
 
 # automated pypi releases
 deploy:
