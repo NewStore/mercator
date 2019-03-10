@@ -10,10 +10,13 @@ Python DSL to leverage translation of dictionaries and SQLAlchemy into Protobuf 
    :alt: Documentation Status
 .. image:: https://travis-ci.org/NewStore/mercator.svg?branch=master
    :target: https://travis-ci.org/NewStore/mercator
+   :alt: Travis Build
 .. image:: https://img.shields.io/pypi/pyversions/mercator.svg
    :target: https://pypi.python.org/pypi/mercator
-.. image:: https://badges.gitter.im/NewStore/mercator.svg
-   :target: https://gitter.im/NewStore/mercator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+   :alt: PyPi Project Page
+.. image:: https://codecov.io/gh/NewStore/mercator/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/NewStore/mercator
+   :alt: Test Coverage Reports
 
 
 Install
