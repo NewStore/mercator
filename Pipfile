@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+grpcio = "*"
+protobuf = "*"
+SQLAlchemy = "*"
+
+[dev-packages]
+coverage = "*"
+ipdb = "*"
+mock = "*"
+nose = "*"
+rednose = "*"
+sphinx-rtd-theme = "*"
+sure = "*"
+twine = "*"
+grpcio-tools = "*"
+Sphinx = "*"
+nose-watch = "*"
+
+[requires]
+python_version = "3.7"

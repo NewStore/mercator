@@ -1,0 +1,48 @@
+syntax = "proto3";
+package services.social_platform;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+service Auth {
+  // returns an User.AuthToken
+  rpc AuthenticateUser (AuthRequest) returns (AuthResponse){};
+}
+
+message AuthRequest {
+  string username = 1;
+  string password = 2;
+}
+message AuthResponse {
+  User.AuthToken token = 1;
+}
+
+
+message User {
+  message AuthToken {
+    string value = 1;
+    google.protobuf.Timestamp created_at = 2;
+    google.protobuf.Timestamp expires_at = 3;
+  }
+
+  string uuid = 1;
+  string username = 2;
+  string email = 3;
+  repeated AuthToken tokens = 4;
+  google.protobuf.Struct metadata = 5;
+}
+
+message Media {
+  User author = 1; // the author of the media
+  string download_url = 2; // the URL where the media can be downloaded
+  bytes blob = 3; // the media itself, if available.
+
+  enum ContentType {
+    BLOG_POST = 0;
+    IMAGE = 1;
+    VIDEO = 2;
+    QUOTE = 3;
+    GIF = 4;
+  }
+  ContentType content_type = 4;
+}
