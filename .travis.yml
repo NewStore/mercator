@@ -14,9 +14,10 @@ install:
   - pip install pipenv
   - pipenv install --dev
   - pipenv run python setup.py install
+  - make proto  # generate python files from proto
 
 # command to run tests
-script: make unit functional
+script: proto unit functional
 
 # automated pypi releases
 deploy:
