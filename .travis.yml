@@ -11,10 +11,12 @@ matrix:
         - python: 3.6.5
 
 install:
-  - pip install -r requirements.txt
+  - pip install pipenv
+  - pipenv install --dev
+  - pipenv run python setup.py install
 
 # command to run tests
-script: nosetests tests
+script: make unit functional
 
 # automated pypi releases
 deploy:

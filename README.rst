@@ -34,12 +34,87 @@ Basic Usage
 -----------
 
 
+1. Given a protobuf declaration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 .. code:: protobuf
 
+   syntax = "proto3";
+   package services.social_platform;
 
+   import "google/protobuf/timestamp.proto";
+
+   message User {
+     message AuthToken {
+       string value = 1;
+       google.protobuf.Timestamp created_at = 2;
+       google.protobuf.Timestamp expires_at = 3;
+     }
+   }
+
+
+2. Declare Mappings
+~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
+
+   from mercator import (
+       ProtoMapping,
+       ProtoKey,
+       ProtoList,
+       SinglePropertyMapping,
+   )
+   from google.protobuf.timestamp_pb2 import Timestamp
+   from google.protobuf.struct_pb2 import Struct
+   from google.protobuf import struct_pb2
+
+
+   ProtobufTimestamp = SinglePropertyMapping(int, Timestamp, 'seconds')
+
+   class UserAuthTokenMapping(ProtoMapping):
+       __proto__ = domain_pb2.User.AuthToken
+       value = ProtoKey('data', str)
+       created_at = ProtoKey('created_at', ProtobufTimestamp)
+       expires_at = ProtoKey('expires_at', ProtobufTimestamp)
+
+
+   class UserMapping(ProtoMapping):
+       __proto__ = domain_pb2.User
+
+       tokens = ProtoList('tokens', UserAuthTokenMapping)
+
+
+3. Generate python files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: shell
+
+   python -m grpc_tools.protoc -I ./ --python_out=./ --grpc_python_out=./ ./*.proto
+
+
+4. Process data!
+~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+
+   info = {
+       'login': 'Hulk',
+       'email': 'bruce@avengers.world',
+       'tokens': [
+           {
+               'data': 'this is the token',
+               'created_at': 1552240433,
+               'expires_at': 1552240733,
+           }
+       ],
+   }
+
+   user = UserMapping(info).to_protobuf()
+
+   assert isinstance(user, domain_pb2.User)
 
 
 Contributing
