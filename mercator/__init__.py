@@ -25,6 +25,34 @@ from .errors import ProtobufCastError
 
 
 class SinglePropertyMapping(MercatorDomainClass):
+    """creates a new instance of the given protobuf type populated with a
+    single property preprocessing the input value with the given callable.
+
+    Usage example:
+
+    .. code:: python
+
+       from mercator import (
+           ProtoMapping,
+           ProtoKey,
+           SinglePropertyMapping,
+       )
+       from google.protobuf.timestamp_pb2 import Timestamp
+
+       ProtobufTimestamp = SinglePropertyMapping(int, Timestamp, 'seconds')
+
+       class UserAuthTokenMapping(ProtoMapping):
+           __proto__ = domain_pb2.User.AuthToken
+           value = ProtoKey('data', str)
+           created_at = ProtoKey('created_at', ProtobufTimestamp)
+           expires_at = ProtoKey('expires_at', ProtobufTimestamp)
+
+
+        auth_token = UserAuthTokenMapping({'created_at': 12345}).to_protobuf()
+
+        assert isinstance(auth_token.created_at, Timestamp)
+        assert auth_token.created_at.seconds == 12345
+    """
     def __init__(self, to_python, pb2_type, argname):
         self.to_python = to_python
         self.message_type = pb2_type
