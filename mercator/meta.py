@@ -1,5 +1,5 @@
 import inspect
-
+from .errors import ProtobufCastError
 
 REGISTRY = {}
 BASE_MODEL_CLASS_REGISTRY = {}
@@ -26,7 +26,7 @@ class FieldMapping(object):
         self.target_type = target_type
 
         if target_type is not None and not isinstance(target_type, type) and not isinstance(target_type, MercatorDomainClass):
-            raise TypeError(f'{self.__class__} takes a type as second argument, but got {type(target_type)} instead')
+            raise TypeError(f'{self.__class__} takes a type as second argument, but got {type(target_type).__name__} instead')
 
     def cast(self, value):
         if value is None:
@@ -35,7 +35,11 @@ class FieldMapping(object):
         if self.target_type is None:
             return value
 
-        return self.target_type(value)
+        try:
+            return self.target_type(value)
+        except (ValueError, TypeError) as e:
+            msg = str(e)
+            raise ProtobufCastError(f'{msg} while casting "{value}" ({type(value).__name__}) to {self.target_type.__name__}')
 
 
 class ImplicitMapping(FieldMapping):

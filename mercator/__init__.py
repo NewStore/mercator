@@ -118,6 +118,8 @@ class ProtoList(FieldMapping):
         if issubclass(self.target_type, ProtoMapping):
             return [self.target_type(item).to_protobuf() for item in value]
 
+        return result
+
 
 def extract_fields_from_dict(data, names):
     return dict([(name, target.cast(data.get(target.name_at_source))) for name, target in names.items()])
@@ -199,7 +201,7 @@ class ProtoMapping(object, metaclass=MetaMapping):
             return extract_fields_from_object(self.data, fields)
 
         else:
-            raise TypeError(f'{self.data} must be a dict or SQLAlchemy ORM model but is {type(self.data)} instead')
+            raise TypeError(f'{self.data} must be a dict or {self.BaseModelClass} but is {type(self.data)} instead')
 
     def to_protobuf(self):
         data = self.to_dict()
