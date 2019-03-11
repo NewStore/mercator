@@ -170,6 +170,8 @@ epub_exclude_files = ["search.html"]
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
 
+    'google.protobuf': ('https://developers.google.com/protocol-buffers/docs/reference/python', None),
+    'sqlalchemy': ('https://docs.sqlalchemy.org/en/latest/', None),
     'click': ('http://click.pocoo.org/latest/', None),
     'requests': ('http://docs.python-requests.org/en/master/', None),
 }
