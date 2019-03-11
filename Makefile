@@ -8,7 +8,7 @@ develop:
 	pipenv run python setup.py develop
 
 tests: proto
-	pipenv run nosetests --with-watch tests
+	pipenv run nosetests --cover-erase --with-watch tests
 
 unit:
 	pipenv run nosetests tests/unit --cover-erase # let's clear the test coverage report during unit tests only
