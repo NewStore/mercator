@@ -50,3 +50,4 @@ tests/functional/domain_pb2.py
 tests/functional/domain_pb2_grpc.py
 docs/build/
 dist/
+Pipfile.lock
