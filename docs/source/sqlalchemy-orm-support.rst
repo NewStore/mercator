@@ -298,6 +298,7 @@ Service Implementation with Mappings of Mappings
        SinglePropertyMapping,
    )
    from google.protobuf.timestamp_pb2 import Timestamp
+   from concurrent.futures import ThreadPoolExecutor
 
    from . import social_platform_pb2
    from . import social_platform_pb2_grpc
@@ -363,5 +364,9 @@ Service Implementation with Mappings of Mappings
            return MediaMapping(media).to_protobuf()
 
 
-   server = grpc.server()
+   server = grpc.server(
+       ThreadPoolExecutor(max_workers=10)
+   )
+
+
    social_platform_pb2_grpc.add_MediaServicer_to_server(MediaServicer(), server)

@@ -8,26 +8,12 @@ from mercator import (
     SinglePropertyMapping,
 )
 from google.protobuf.timestamp_pb2 import Timestamp
-from google.protobuf.struct_pb2 import Struct
-from google.protobuf import struct_pb2
 
 from . import domain_pb2
 from . import domain_pb2_grpc
 from . import sql
 
 ProtobufTimestamp = SinglePropertyMapping(int, Timestamp, 'seconds')
-
-
-# def serialize_struct(data):
-#     serialized = {}
-#     for k, v in data.items():
-#         if v is None:
-#             serialized[k] = struct_pb2.Value(v)
-#         elif isinstance(v, str):
-#             serialized[k] = {'null_value': 0}
-
-ProtobufValue = SinglePropertyMapping(dict, struct_pb2.Value, 'fields')
-ProtobufStruct = SinglePropertyMapping(ProtobufValue, Struct, 'fields')
 
 
 class AuthRequestMapping(ProtoMapping):
