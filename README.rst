@@ -5,15 +5,15 @@ Mercator - Data Mapper for Protobuf
 
 Python DSL to leverage translation of dictionaries and SQLAlchemy into Protobuf objects
 
-.. image:: https://readthedocs.org/projects/mercator/badge/?version=latest
-   :target: http://mercator.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
-.. image:: https://travis-ci.org/NewStore/mercator.svg?branch=master
-   :target: https://travis-ci.org/NewStore/mercator
-   :alt: Travis Build
 .. image:: https://img.shields.io/pypi/pyversions/mercator.svg
    :target: https://pypi.python.org/pypi/mercator
    :alt: PyPi Project Page
+.. image:: https://travis-ci.org/NewStore/mercator.svg?branch=master
+   :target: https://travis-ci.org/NewStore/mercator
+   :alt: Travis Build
+.. image:: https://readthedocs.org/projects/mercator/badge/?version=latest
+   :target: http://mercator.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 .. image:: https://codecov.io/gh/NewStore/mercator/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/NewStore/mercator
    :alt: Test Coverage Reports
