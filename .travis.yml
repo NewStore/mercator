@@ -2,19 +2,18 @@ dist: xenial
 language: python
 sudo: false
 python:
-  - "3.6.5"
   - "3.7"
-
+  - "3.6.5"
+  - "3.5"
 
 matrix:
     allow_failures:
-        - python: 3.6.5
+        - python: 3.5
 
 install:
   - pip install pipenv
   - pipenv install --dev
   - pipenv run python setup.py install
-  - make proto  # generate python files from proto
 
 # command to run tests
 script: make proto unit functional
