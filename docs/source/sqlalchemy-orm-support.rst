@@ -210,9 +210,14 @@ Protobuf declaration
 ~~~~~~~~~~~~~~~~~~~~
 
 For consistency with code examples let's consider this is saved with
-``social_platform.proto`` and subsequently compiled to python with
-``python -m grpc_tools.protoc -I ./ --python_out=./
---grpc_python_out=./ ./social_platform.proto``.
+``social_platform.proto`` and subsequently compiled to python with:
+
+.. code-block:: bash
+
+   python -m grpc_tools.protoc -I ./ \
+       --python_out=./
+       --grpc_python_out=./
+       ./social_platform.proto
 
 .. code-block:: proto
    :emphasize-lines: 31,38
@@ -282,7 +287,6 @@ Service Implementation with Mappings of Mappings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
-   :linenos:
    :emphasize-lines: 30-31, 41, 49, 58
 
    import grpc

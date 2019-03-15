@@ -39,7 +39,7 @@ Example:
 
 .. _source-input-type:
 
-:ref:`source-input-type`
+``__source_input_type__``
 -------------------------
 
 
