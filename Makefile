@@ -29,6 +29,8 @@ release:
 	@rm -rf dist/*
 	@./.release
 	@make pypi
+	@git push
+	@git push --tags
 
 pypi:
 	@pipenv run python setup.py build sdist
