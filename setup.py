@@ -56,6 +56,8 @@ setup(
     install_requires=read_requirements(),
     long_description=read_readme(),
     name='mercator',
+    url='https://mercator.readthedocs.io/en/latest/',
+    download_url='https://github.com/NewStore/mercator/releases',
     packages=find_packages(exclude=['*tests*']),
     test_suite='nose.collector',
     version=read_version(),
