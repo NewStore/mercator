@@ -210,9 +210,15 @@ class ProtoMapping(object, metaclass=MetaMapping):
            token = ProtoKey('token', UserAuthTokenMapping)
     """
     def __init__(self, data):
+        """
+        :param data: a :py:class:`dict` or object compatible with the ``__source_input_type__`` declaration at the class level.
+        """
         self.data = data
 
     def to_dict(self):
+        """
+        :returns: a :py:class:`dict` with keyword-arguments to construct a new instance of protobuf message defined by ``__proto__``.
+        """
         if self.data is None:
             return {}
 
@@ -227,5 +233,8 @@ class ProtoMapping(object, metaclass=MetaMapping):
             raise TypeError(f'{self.data} must be a dict or {self.__source_input_type__} but is {type(self.data)} instead')
 
     def to_protobuf(self):
+        """
+        returns a new ``__proto__`` instance with the data extracted with :py:meth:`~mercator.ProtoMapping.to_dict`.
+        """
         data = self.to_dict()
         return self.__proto__(**data)
