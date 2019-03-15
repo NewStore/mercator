@@ -234,7 +234,7 @@ class ProtoMapping(object, metaclass=MetaMapping):
 
     def to_protobuf(self):
         """
-        returns a new :ref:`proto` instance with the data extracted with :py:meth:`~mercator.ProtoMapping.to_dict`.
+        :returns: a new :ref:`proto` instance with the data extracted with :py:meth:`~mercator.ProtoMapping.to_dict`.
         """
         data = self.to_dict()
         return self.__proto__(**data)
