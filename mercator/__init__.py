@@ -206,8 +206,4 @@ class ProtoMapping(object, metaclass=MetaMapping):
 
     def to_protobuf(self):
         data = self.to_dict()
-        try:
-            return self.__proto__(**data)
-        except ValueError as e:
-            message = str(e)
-            raise ProtobufCastError(f'{message} when casting {self.__proto__} with data: {data}')
+        return self.__proto__(**data)
