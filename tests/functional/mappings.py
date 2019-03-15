@@ -36,7 +36,7 @@ class AuthRequestMapping(ProtoMapping):
 
 class UserAuthTokenMapping(ProtoMapping):
     __proto__ = domain_pb2.User.AuthToken
-    BaseModelClass = sql.AuthToken
+    __source_input_type__ = sql.AuthToken
     value = ProtoKey('data', str)
     created_at = ProtoKey('created_at', ProtobufTimestamp)
     expires_at = ProtoKey('expires_at', ProtobufTimestamp)
@@ -44,7 +44,7 @@ class UserAuthTokenMapping(ProtoMapping):
 
 class UserMapping(ProtoMapping):
     __proto__ = domain_pb2.User
-    BaseModelClass = sql.User
+    __source_input_type__ = sql.User
 
     uuid = ProtoKey('id', str)
     email = ProtoKey('email', str)
@@ -56,7 +56,7 @@ class UserMapping(ProtoMapping):
 class MediaMapping(ProtoMapping):
     __proto__ = domain_pb2.Media
 
-    BaseModelClass = sql.Media
+    __source_input_type__ = sql.Media
     author = ProtoKey('author', UserMapping)
     download_url = ProtoKey('link', str)
     blob = ProtoKey('blob', bytes)

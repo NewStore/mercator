@@ -18,14 +18,14 @@ def test_declare_mapping_missing_proto():
 
 
 def test_declare_mapping_invalid_base_model_class():
-    "SyntaxError should be raised when declaring a proto mapping with BaseModelClass that is not a type"
+    "SyntaxError should be raised when declaring a proto mapping with __source_input_type__ that is not a type"
 
     def declare_invalid():
         class Foo(ProtoMapping):
             __proto__ = Message
-            BaseModelClass = 'foobar'
+            __source_input_type__ = 'foobar'
 
     declare_invalid.when.called.should.have.raised(
         SyntaxError,
-        'class Foo defined a BaseModelClass attribute that is not a valid python type: foobar'
+        'class Foo defined a __source_input_type__ attribute that is not a valid python type: foobar'
     )

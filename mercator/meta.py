@@ -67,10 +67,10 @@ class MetaMapping(type):
             if not proto_cls:
                 raise SyntaxError(f'class {name} does not define a __proto__')
 
-            base_model_class = attributes.get('BaseModelClass')
+            base_model_class = attributes.get('__source_input_type__')
             if base_model_class:
                 if not isinstance(base_model_class, type):
-                    raise SyntaxError(f'class {name} defined a BaseModelClass attribute that is not a valid python type: {base_model_class}')
+                    raise SyntaxError(f'class {name} defined a __source_input_type__ attribute that is not a valid python type: {base_model_class}')
 
                 BASE_MODEL_CLASS_REGISTRY[base_model_class] = cls
 

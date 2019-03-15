@@ -198,11 +198,11 @@ class ProtoMapping(object, metaclass=MetaMapping):
         if isinstance(self.data, dict):
             return extract_fields_from_dict(self.data, fields)
 
-        elif isinstance(self.data, self.BaseModelClass):
+        elif isinstance(self.data, self.__source_input_type__):
             return extract_fields_from_object(self.data, fields)
 
         else:
-            raise TypeError(f'{self.data} must be a dict or {self.BaseModelClass} but is {type(self.data)} instead')
+            raise TypeError(f'{self.data} must be a dict or {self.__source_input_type__} but is {type(self.data)} instead')
 
     def to_protobuf(self):
         data = self.to_dict()
