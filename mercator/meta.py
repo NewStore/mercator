@@ -29,7 +29,7 @@ class FieldMapping(object):
     so the metaclass can capture the field mapping declarations during
     import-time.
     """
-    def __init__(self, name_at_source:str, target_type:type=None):
+    def __init__(self, name_at_source: str, target_type: type = None):
         """
         :param name_at_source: a string with the name of key or property to be extracted in an input object before casting into the target type.
         :param target_type: an optional :py:class:`~mercator.ProtoMapping` subclass or native python type

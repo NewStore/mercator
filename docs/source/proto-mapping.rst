@@ -77,3 +77,73 @@ This feature was primarily designed to support `SQLAlchemy ORM models <https://d
 
 .. seealso:: The section :ref:`SQLAlchemy Support` for more information on
              how to use the ``__source_input_type__`` attribute.
+
+
+.. _field mapping:
+
+Field mappings
+--------------
+
+Field mappings are either :py:class:`~mercator.ProtoKey` or
+:py:class:`~mercator.ProtoList` class-attributes defined in the body
+of your :py:class:`~mercator.ProtoMapping` subclass.
+
+This gives you the power to gather data from dictionaries with keys
+that are different than in the protobuf model.
+
+
+.. _target-type:
+
+``target_type``
+~~~~~~~~~~~~~~~
+
+Field mappings are subclasses of :py:class:`mercator.meta.FieldMapping` and share its signatures:
+
+``FieldMapping(name_at_source: str, target_type: type)``
+
+The ``target_type`` argument is optional, but when given, supports different types.
+
+Let's dive into the possibilities.
+
+.. _target-type-native:
+
+Native python types
+~~~~~~~~~~~~~~~~~~~
+
+Ensures that the field value is cast into any python type, namely: :py:class:`str`, :py:class:`int`, :py:class:`float`, :py:class:`long`, :py:class:`dict`, :py:class:`list`
+
+
+Mappings of Mappings
+~~~~~~~~~~~~~~~~~~~~
+
+Allows recursively translating data into protobuf messages whose
+members contain sub-messages.
+
+
+Example
+.......
+
+.. code-block:: python
+   :emphasize-lines: 20
+
+   from mercator import (
+       ProtoMapping,
+       ProtoKey,
+   )
+   from . import domain_pb2
+   from . import sql
+
+
+   class UserMapping(ProtoMapping):
+       __proto__ = domain_pb2.User
+
+       uuid = ProtoKey('id', str)
+       email = ProtoKey('email', str)
+       username = ProtoKey('login', str)
+
+
+   class MediaMapping(ProtoMapping):
+       __proto__ = domain_pb2.UserMedia
+
+       author = ProtoKey('owner', UserMapping)
+       download_url = ProtoKey('link', str)
