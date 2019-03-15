@@ -95,6 +95,8 @@ def validate_proto_attribute(name, attributes):
     if not proto_cls:
         raise SyntaxError(f'class {name} does not define a __proto__')
 
+    return proto_cls
+
 
 def validate_and_register_base_model_class(cls, name, attributes):
     """Invoked by :py:class:`~mercator.MetaMapping` during "import time"
@@ -122,7 +124,7 @@ class MetaMapping(type):
         if name in ('MetaMapping', 'ProtoMapping'):
             return cls
 
-        validate_proto_attribute(name, attributes)
+        proto_cls = validate_proto_attribute(name, attributes)
         validate_and_register_base_model_class(cls, name, attributes)
 
         # extract field names from the __proto__ class, those will
