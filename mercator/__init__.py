@@ -113,12 +113,13 @@ class ProtoList(FieldMapping):
             return
 
         if not isinstance(value, (list, tuple)):
-            raise TypeCastError(f'ProtoList.cast() received a non-list value (type {type(value).__name__}): {value}')
+            raise TypeCastError(f'ProtoList.cast() received a non-list value '
+                                f'(type {type(value).__name__}): {value}')
 
         if issubclass(self.target_type, ProtoMapping):
             return [self.target_type(item).to_protobuf() for item in value]
 
-        return result
+        return [self.target_type(item) for item in value]
 
 
 def extract_fields_from_dict(data, names):

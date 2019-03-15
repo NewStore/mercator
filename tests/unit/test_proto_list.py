@@ -51,3 +51,18 @@ def test_proto_list_non_list_tuple():
     when_called = field.cast.when.called_with('some tokens as string')
 
     when_called.should.have.raised(TypeCastError)
+
+
+def test_proto_list_native_type():
+    "ProtoList() should return a list of native types"
+
+    field = ProtoList('user_ids', str)
+    result = field.cast([1, 2])
+
+    result.should.be.a(list)
+    result.should.have.length_of(2)
+    result.should.equal(['1', '2'])
+
+    t1, t2 = result
+    t1.should.be.a(str)
+    t2.should.be.a(str)

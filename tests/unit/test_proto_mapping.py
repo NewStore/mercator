@@ -22,3 +22,14 @@ def test_proto_mapping_from_none():
         ProtobufCastError,
         'int() argument must be a string, a bytes-like object or a number, not \'dict\' while casting "{\'invalid\': \'val\'}" (dict) to int'
     )
+
+
+def test_proto_mapping_to_dict_when_none():
+    "ProtoMapping() should return empty dict if input value None"
+
+    mapping = TimestampMapping(None)
+
+    result = mapping.to_dict()
+
+    result.should.be.a(dict)
+    result.should.equal({})
