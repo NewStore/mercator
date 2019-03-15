@@ -42,11 +42,36 @@ Example:
 **If declared,** this property will be considered as base-class of
  opaque objects that can have its properties mapped into protobuf.
 
- This feature was primarily designed to support `SQLAlchemy ORM
- <https://docs.sqlalchemy.org/en/latest/orm/>`_ models out of the box.
+ This feature was primarily designed to support `SQLAlchemy ORM <https://docs.sqlalchemy.org/en/latest/orm/>`_ models out of the box.
+
+
+.. code:: python
+
+   from sqlalchemy.ext.declarative import declarative_base
+
+   from mercator import ProtoMapping
+   from mercator import ProtoKey
+
+
+   MySimpleBaseModel = declarative_base()
+
+   class User(MySimpleBaseModel):
+       __tablename__ = 'user'
+       __table_args__ = {'useexisting': True}
+
+    login = sa.Column(sa.String(256))
+       email = sa.Column(sa.String(256))
+       password = sa.Column(sa.String(256))
+
+
+
+   class UserMapping(ProtoMapping):
+       __proto__ = domain_pb2.User
+       __source_input_type__ = User
+
 
  .. important:: This attribute is optional when declaring proto mappings, but if defined it must be a :py:class:`type`.
 
 
-.. seealso:: The section `SQLAlchemy ORM Support`_ for more information on
+.. seealso:: The section :ref:`SQLAlchemy Support` for more information on
              how to use the ``__source_input_type`` attribute.

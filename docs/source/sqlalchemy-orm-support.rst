@@ -1,5 +1,6 @@
-.. _SQLAlchemy Support:
+.. _SQLAlchemy ORM Support:
 
+.. _SQLAlchemy Support:
 
 SQLAlchemy ORM Support
 ======================
@@ -19,14 +20,14 @@ so use it wisely.
 
 
 A simple recipe
-~~~~~~~~~~~~~~~
+---------------
 
 This example was partially extracted from the functional tests and simplified for didactic purposes. There is `a more complete example on github. <https://github.com/NewStore/mercator/blob/master/tests/functional/test_sqlalchemy_orm_to_proto.py>`_
 
 Here we simplified our recipe to a service to *"return user data from a SQL database"*
 
 **Ingredients**
-...............
+~~~~~~~~~~~~~~~
 
 1. A SQLAlchemy model: ``User``
 2. A Protobuf definition of a ``User`` message and a ``UserService``
@@ -35,7 +36,8 @@ Here we simplified our recipe to a service to *"return user data from a SQL data
 
 
 A SQLAlchemy Model
-..................
+~~~~~~~~~~~~~~~~~~
+
 
 .. code-block:: python
 
@@ -59,7 +61,8 @@ A SQLAlchemy Model
 
 
 A protobuf declaration
-......................
+~~~~~~~~~~~~~~~~~~~~~~
+
 
 .. code-block:: proto
 
@@ -82,7 +85,8 @@ A protobuf declaration
 
 
 The service implementation
-..........................
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 
 .. code-block:: python
