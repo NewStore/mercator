@@ -97,9 +97,15 @@ that are different than in the protobuf model.
 ``target_type``
 ~~~~~~~~~~~~~~~
 
-Field mappings are subclasses of :py:class:`mercator.meta.FieldMapping` and share its signatures:
+Field mappings are subclasses of :py:class:`mercator.meta.FieldMapping` and share its ``__init__`` signature:
 
-``FieldMapping(name_at_source: str, target_type: type)``
+.. code-block:: python
+
+   FieldMapping(name_at_source: str, target_type: type)
+
+   ProtoKey(name_at_source: str, target_type: type)
+
+   ProtoList(name_at_source: str, target_type: type)
 
 The ``target_type`` argument is optional, but when given, supports different types.
 

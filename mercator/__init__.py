@@ -28,9 +28,10 @@ class SinglePropertyMapping(MercatorDomainClass):
     """creates a new instance of the given protobuf type populated with a
     single property preprocessing the input value with the given callable.
 
-    Usage example:
+    Example:
 
-    .. code:: python
+    .. code-block:: python
+       :emphasize-lines: 8, 13-14
 
        from mercator import (
            ProtoMapping,
@@ -80,6 +81,8 @@ class ProtoKey(FieldMapping):
 
            username = ProtoKey('login', str)
 
+    :param name_at_source: a string with the name of key or property to be extracted in an input object before casting into the target type.
+    :param target_type: an optional :py:class:`~mercator.ProtoMapping` subclass or native python type. Check :ref:`target-type` for more details.
     """
     def cast(self, value):
         """
@@ -109,6 +112,9 @@ class ProtoList(FieldMapping):
            __proto__ = domain_pb2.User
 
            tokens = ProtoList('tokens', UserAuthTokenMapping)
+
+    :param name_at_source: a string with the name of key or property to be extracted in an input object before casting into the target type.
+    :param target_type: an optional :py:class:`~mercator.ProtoMapping` subclass or native python type. Check :ref:`target-type` for more details.
     """
     def cast(self, value):
         """
@@ -157,7 +163,7 @@ class ProtoMapping(object, metaclass=MetaMapping):
     :py:class:`sqlalchemy.ext.declarative.api.Base` instances into
     pre-filled protobuf messages.
 
-    Usage example:
+    Example:
 
     .. code:: python
 

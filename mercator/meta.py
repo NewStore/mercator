@@ -28,12 +28,11 @@ class FieldMapping(object):
     This base-class resides in :py:mod:`mercator.meta`
     so the metaclass can capture the field mapping declarations during
     import-time.
+
+    :param name_at_source: a string with the name of key or property to be extracted in an input object before casting into the target type.
+    :param target_type: an optional :py:class:`~mercator.ProtoMapping` subclass or native python type. Check :ref:`target-type` for more details.
     """
     def __init__(self, name_at_source: str, target_type: type = None):
-        """
-        :param name_at_source: a string with the name of key or property to be extracted in an input object before casting into the target type.
-        :param target_type: an optional :py:class:`~mercator.ProtoMapping` subclass or native python type
-        """
         self.name_at_source = name_at_source
         self.target_type = target_type
 

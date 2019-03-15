@@ -21,6 +21,7 @@ ProtoKey
 .. autoclass:: mercator.ProtoKey
    :members:
    :undoc-members:
+   :inherited-members:
 
 ProtoList
 ---------
@@ -30,6 +31,7 @@ ProtoList
 .. autoclass:: mercator.ProtoList
    :members:
    :undoc-members:
+   :inherited-members:
 
 SinglePropertyMapping
 ---------------------
@@ -39,6 +41,7 @@ SinglePropertyMapping
 .. autoclass:: mercator.SinglePropertyMapping
    :members:
    :undoc-members:
+   :inherited-members:
 
 mercator.errors
 ---------------
@@ -48,6 +51,7 @@ mercator.errors
 .. automodule:: mercator.errors
    :members:
    :undoc-members:
+   :inherited-members:
 
 mercator.meta
 -------------
@@ -57,3 +61,4 @@ mercator.meta
 .. automodule:: mercator.meta
    :members:
    :undoc-members:
+   :inherited-members:
