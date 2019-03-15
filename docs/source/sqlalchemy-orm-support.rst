@@ -135,6 +135,7 @@ The SQL Models
 
 
 .. code-block:: python
+   :emphasize-lines: 44-49, 61-66
 
    from uuid import uuid4
    import sqlalchemy as sa
@@ -214,6 +215,7 @@ For consistency with code examples let's consider this is saved with
 --grpc_python_out=./ ./social_platform.proto``.
 
 .. code-block:: proto
+   :emphasize-lines: 31,38
 
    syntax = "proto3";
    package services.social_platform;
@@ -280,6 +282,7 @@ Service Implementation with Mappings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
+   :emphasize-lines: 44, 52, 61
 
    import grpc
 
@@ -329,9 +332,9 @@ Service Implementation with Mappings
 
 
    class MediaMapping(ProtoMapping):
-       __proto__ = social_platform_pb2.Media
-
+       __proto__ = social_platform_pb2.UserMedia
        __source_input_type__ = sql.Media
+
        author = ProtoKey('author', UserMapping)
        download_url = ProtoKey('link', str)
        blob = ProtoKey('blob', bytes)
