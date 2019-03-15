@@ -1,3 +1,4 @@
+import grpc
 
 from mercator import (
     ProtoMapping,
@@ -10,6 +11,7 @@ from google.protobuf.struct_pb2 import Struct
 from google.protobuf import struct_pb2
 
 from . import domain_pb2
+from . import domain_pb2_grpc
 from . import sql
 
 ProtobufTimestamp = SinglePropertyMapping(int, Timestamp, 'seconds')
@@ -54,7 +56,7 @@ class UserMapping(ProtoMapping):
 
 
 class MediaMapping(ProtoMapping):
-    __proto__ = domain_pb2.Media
+    __proto__ = domain_pb2.UserMedia
 
     __source_input_type__ = sql.Media
     author = ProtoKey('author', UserMapping)
@@ -67,3 +69,21 @@ class AuthResponseMapping(ProtoMapping):
     __proto__ = domain_pb2.AuthResponse
 
     token = ProtoKey('token', UserAuthTokenMapping)
+
+
+class MediaRequestMapping(ProtoMapping):
+    __proto__ = domain_pb2.MediaRequest
+
+
+class MediaServicer(domain_pb2_grpc.MediaServicer):
+    def GetMedia(self, request, context):
+        media = business_logic_module.retrieve_media_from_sqlalchemy(
+            uuid=request.media_uuid,
+            name=request.media_name,
+        )
+
+        return MediaMapping(media).to_protobuf()
+
+
+server = grpc.server()
+domain_pb2_grpc.add_MediaServicer_to_server(MediaServicer(), server)

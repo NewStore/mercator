@@ -32,10 +32,12 @@ message User {
   google.protobuf.Struct metadata = 5;
 }
 
-message Media {
-  User author = 1; // the author of the media
-  string download_url = 2; // the URL where the media can be downloaded
-  bytes blob = 3; // the media itself, if available.
+message UserMedia {
+  string uuid = 1;
+  string name = 2;
+  User author = 3; // the author of the media
+  string download_url = 4; // the URL where the media can be downloaded
+  bytes blob = 5; // the media itself, if available.
 
   enum ContentType {
     BLOG_POST = 0;
@@ -45,4 +47,13 @@ message Media {
     GIF = 4;
   }
   ContentType content_type = 4;
+}
+
+message MediaRequest {
+   string media_uuid = 1;
+   string media_name = 2;
+}
+
+service Media {
+   rpc GetMedia (MediaRequest) returns (UserMedia){};
 }

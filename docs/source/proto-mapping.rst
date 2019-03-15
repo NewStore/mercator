@@ -62,7 +62,7 @@ This feature was primarily designed to support `SQLAlchemy ORM models <https://d
        __tablename__ = 'user'
        __table_args__ = {'useexisting': True}
 
-    login = sa.Column(sa.String(256))
+       login = sa.Column(sa.String(256))
        email = sa.Column(sa.String(256))
        password = sa.Column(sa.String(256))
 
@@ -76,4 +76,4 @@ This feature was primarily designed to support `SQLAlchemy ORM models <https://d
 
 
 .. seealso:: The section :ref:`SQLAlchemy Support` for more information on
-             how to use the :ref:`source-input-type` attribute.
+             how to use the ``__source_input_type__`` attribute.
