@@ -82,6 +82,10 @@ class ProtoKey(FieldMapping):
 
     """
     def cast(self, value):
+        """
+        :param value: a python object that is compatible with the given ``target_type``
+        :returns: ``value`` coerced into the target type. Supports ProtoMappings by automatically calling :py:meth:`~mercator.ProtoMapping.to_protobuf`.
+        """
         if value is None:
             return
 
@@ -107,6 +111,10 @@ class ProtoList(FieldMapping):
            tokens = ProtoList('tokens', UserAuthTokenMapping)
     """
     def cast(self, value):
+        """
+        :param value: a python object that is compatible with the given ``target_type``
+        :returns: list of items target type coerced into the ``target_type``. Supports ProtoMappings by automatically calling :py:meth:`~mercator.ProtoMapping.to_protobuf`.
+        """
         result = super().cast(value)
 
         if result is None:
@@ -122,11 +130,25 @@ class ProtoList(FieldMapping):
         return [self.target_type(item) for item in value]
 
 
-def extract_fields_from_dict(data, names):
+def extract_fields_from_dict(data: dict, names: dict):
+    """Utility method used by :py:meth:`~mercator.ProtoMapping.to_dict`
+    for extracting data plain python dictionaries.
+
+    :param data: a dict with data to be mapped into protobuf objects
+    :param names: a :py:class:`dict` with :py:class:`~mercator.meta.FieldMapping` for values.
+    :returns: a dict with keyword-arguments to construct new protobuf messages.
+    """
     return dict([(name, target.cast(data.get(target.name_at_source))) for name, target in names.items()])
 
 
-def extract_fields_from_object(data, names):
+def extract_fields_from_object(data: object, names: dict):
+    """Utility method used by :py:meth:`~mercator.ProtoMapping.to_dict`
+    for extracting data from instances of ``__source_input_type__``.
+
+    :param data: a dict with data to be mapped into protobuf objects
+    :param names: a :py:class:`dict` with :py:class:`~mercator.meta.FieldMapping` for values.
+    :returns: a dict with keyword-arguments to construct new protobuf messages.
+    """
     return dict([(name, target.cast(getattr(data, target.name_at_source, None))) for name, target in names.items()])
 
 
