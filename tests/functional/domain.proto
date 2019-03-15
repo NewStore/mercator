@@ -46,7 +46,7 @@ message UserMedia {
     QUOTE = 3;
     GIF = 4;
   }
-  ContentType content_type = 4;
+  ContentType content_type = 6;
 }
 
 message MediaRequest {
