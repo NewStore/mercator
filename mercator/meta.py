@@ -10,14 +10,14 @@ class MercatorDomainClass(object):
 
 
 class FieldMapping(object):
-    """Base-class for field mapping declaration in :py:class:`~shared.grpc.protomapper.ProtoMapping`
+    """Base-class for field mapping declaration in :py:class:`~mercator.ProtoMapping`
     that is:
 
-    - :py:class:`~shared.grpc.protomapper.ProtoKey`
-    - :py:class:`~shared.grpc.protomapper.ProtoList`
+    - :py:class:`~mercator.ProtoKey`
+    - :py:class:`~mercator.ProtoList`
 
 
-    This base-class resides in :py:mod:`shared.grpc.protomapper.meta`
+    This base-class resides in :py:mod:`mercator.meta`
     so the metaclass can capture the field mapping declarations during
     import-time.
     """
@@ -43,7 +43,7 @@ class FieldMapping(object):
 
 
 class ImplicitMapping(FieldMapping):
-    """Like :py:class:`~shared.grpc.protomapper.ProtoKey` but works is
+    """Like :py:class:`~mercator.ProtoKey` but works is
     declared automagically by the metaclass.
     """
 

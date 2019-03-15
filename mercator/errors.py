@@ -1,6 +1,6 @@
 class TypeCastError(Exception):
     """Raised when trying to cast a value of the wrong type.
-    Used primarily by :py:meth:`~shared.grpc.protomapper.ProtoList.cast` from :py:class:`~shared.grpc.protomapper.ProtoList`
+    Used primarily by :py:meth:`~mercator.ProtoList.cast` from :py:class:`~mercator.ProtoList`
     """
 
 

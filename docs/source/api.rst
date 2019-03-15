@@ -16,3 +16,9 @@ API Reference
 
 .. autoclass:: mercator.SinglePropertyMapping
    :members:
+
+.. automodule:: mercator.errors
+   :members:
+
+.. automodule:: mercator.meta
+   :members:

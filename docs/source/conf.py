@@ -50,7 +50,7 @@ language = None
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = "sphinx"
+pygments_style = "colorful"
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -170,7 +170,7 @@ epub_exclude_files = ["search.html"]
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
 
-    'google.protobuf': ('https://developers.google.com/protocol-buffers/docs/reference/python', None),
+    # 'google.protobuf': ('https://developers.google.com/protocol-buffers/docs/reference/python', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/latest/', None),
     'click': ('http://click.pocoo.org/latest/', None),
     'requests': ('http://docs.python-requests.org/en/master/', None),
