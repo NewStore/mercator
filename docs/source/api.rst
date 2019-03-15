@@ -4,6 +4,8 @@
 API Reference
 =============
 
+ProtoMapping
+------------
 
 .. _ProtoMapping:
 
@@ -11,11 +13,17 @@ API Reference
    :members:
    :undoc-members:
 
+ProtoKey
+--------
+
 .. _ProtoKey:
 
 .. autoclass:: mercator.ProtoKey
    :members:
    :undoc-members:
+
+ProtoList
+---------
 
 .. _ProtoList:
 
@@ -23,17 +31,26 @@ API Reference
    :members:
    :undoc-members:
 
+SinglePropertyMapping
+---------------------
+
 .. _SinglePropertyMapping:
 
 .. autoclass:: mercator.SinglePropertyMapping
    :members:
    :undoc-members:
 
+mercator.errors
+---------------
+
 .. _errors:
 
 .. automodule:: mercator.errors
    :members:
    :undoc-members:
+
+mercator.meta
+-------------
 
 .. _mercator.meta:
 
