@@ -63,7 +63,6 @@ A SQLAlchemy Model
 A protobuf declaration
 ~~~~~~~~~~~~~~~~~~~~~~
 
-
 .. code-block:: proto
 
    syntax = "proto3";
@@ -86,8 +85,6 @@ A protobuf declaration
 
 The service implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 .. code-block:: python
 

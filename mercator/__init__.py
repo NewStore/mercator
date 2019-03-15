@@ -143,7 +143,7 @@ def extract_fields_from_dict(data: dict, names: dict):
 
 def extract_fields_from_object(data: object, names: dict):
     """Utility method used by :py:meth:`~mercator.ProtoMapping.to_dict`
-    for extracting data from instances of ``__source_input_type__``.
+    for extracting data from instances of :ref:`source-input-type`.
 
     :param data: a dict with data to be mapped into protobuf objects
     :param names: a :py:class:`dict` with :py:class:`~mercator.meta.FieldMapping` for values.
@@ -211,13 +211,13 @@ class ProtoMapping(object, metaclass=MetaMapping):
     """
     def __init__(self, data):
         """
-        :param data: a :py:class:`dict` or object compatible with the ``__source_input_type__`` declaration at the class level.
+        :param data: a :py:class:`dict` or object compatible with the :ref:`source-input-type` declaration at the class level.
         """
         self.data = data
 
     def to_dict(self):
         """
-        :returns: a :py:class:`dict` with keyword-arguments to construct a new instance of protobuf message defined by ``__proto__``.
+        :returns: a :py:class:`dict` with keyword-arguments to construct a new instance of protobuf message defined by :ref:`proto`.
         """
         if self.data is None:
             return {}
@@ -234,7 +234,7 @@ class ProtoMapping(object, metaclass=MetaMapping):
 
     def to_protobuf(self):
         """
-        returns a new ``__proto__`` instance with the data extracted with :py:meth:`~mercator.ProtoMapping.to_dict`.
+        returns a new :ref:`proto` instance with the data extracted with :py:meth:`~mercator.ProtoMapping.to_dict`.
         """
         data = self.to_dict()
         return self.__proto__(**data)

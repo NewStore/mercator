@@ -10,10 +10,12 @@ ways in which python dictionaries or objects can have its keys or
 properties serialized into predefined ProtoBuf messages.
 
 
+.. _proto:
+
 ``__proto__``
 -------------
 
-Every :py:class:`~mercator.ProtoMapping` must declare a ``__proto__`` attribute that points to a valid :py:class:`~google.protobuf.message.Message` subclass.
+Every :py:class:`~mercator.ProtoMapping` must declare a :ref:`proto` attribute that points to a valid :py:class:`~google.protobuf.message.Message` subclass.
 
 Example:
 ~~~~~~~~
@@ -33,19 +35,20 @@ Example:
     seconds = ProtoKey('seconds', int)
 
 
-.. warning:: Failing to declare a valid ``__proto__`` attribute will cause mercator to raise a :py:class:`SyntaxError`
+.. warning:: Failing to declare a valid :ref:`proto` attribute will cause mercator to raise a :py:class:`SyntaxError`
 
+.. _source-input-type:
 
 ``__source_input_type__``
 -------------------------
 
-**If declared,** this property will be considered as base-class of
- opaque objects that can have its properties mapped into protobuf.
 
- This feature was primarily designed to support `SQLAlchemy ORM <https://docs.sqlalchemy.org/en/latest/orm/>`_ models out of the box.
+**If declared**, this property will be considered as base-class of opaque objects that can have its properties mapped into protobuf.
 
+This feature was primarily designed to support `SQLAlchemy ORM models <https://docs.sqlalchemy.org/en/latest/orm/>`_ out of the box but supports any opaque python objects, as long as their base classes are defined by this attribute.
 
-.. code:: python
+.. code-block:: python
+   :emphasize-lines: 20
 
    from sqlalchemy.ext.declarative import declarative_base
 
@@ -64,13 +67,12 @@ Example:
        password = sa.Column(sa.String(256))
 
 
-
    class UserMapping(ProtoMapping):
        __proto__ = domain_pb2.User
        __source_input_type__ = User
 
 
- .. important:: This attribute is optional when declaring proto mappings, but if defined it must be a :py:class:`type`.
+.. important:: This attribute is optional when declaring proto mappings, but if defined it must be a :py:class:`type`.
 
 
 .. seealso:: The section :ref:`SQLAlchemy Support` for more information on

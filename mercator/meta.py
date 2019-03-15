@@ -89,7 +89,7 @@ def field_properties_from_proto_class(proto_class):
 
 def validate_proto_attribute(name, attributes):
     """Invoked by :py:class:`~mercator.MetaMapping` during "import time"
-    to validate the declaration of ``__proto__``.
+    to validate the declaration of :ref:`proto`.
     """
     proto_cls = attributes.get('__proto__')
     if not proto_cls:
@@ -97,10 +97,9 @@ def validate_proto_attribute(name, attributes):
 
     return proto_cls
 
-
 def validate_and_register_base_model_class(cls, name, attributes):
     """Invoked by :py:class:`~mercator.MetaMapping` during "import time"
-    to validate the declaration of ``__source_input_type__``.
+    to validate the declaration of :ref:`source-input-type`.
     """
     base_model_class = attributes.get('__source_input_type__')
     if not base_model_class:
