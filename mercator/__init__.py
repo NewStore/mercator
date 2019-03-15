@@ -160,8 +160,8 @@ def extract_fields_from_object(data: object, names: dict):
 
 class ProtoMapping(object, metaclass=MetaMapping):
     """Base class to define attribute mapping from :py:class:`dict` or
-    :py:class:`sqlalchemy.ext.declarative.api.Base` instances into
-    pre-filled protobuf messages.
+    :py:func:`~sqlalchemy.ext.declarative.declarative_base` subclasses'
+    instances into pre-filled protobuf messages.
 
     Example:
 
@@ -214,6 +214,7 @@ class ProtoMapping(object, metaclass=MetaMapping):
            __proto__ = domain_pb2.AuthResponse
 
            token = ProtoKey('token', UserAuthTokenMapping)
+
     """
     def __init__(self, data):
         """
