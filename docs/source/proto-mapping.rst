@@ -39,7 +39,7 @@ Example:
 
 .. _source-input-type:
 
-``__source_input_type__``
+:ref:`source-input-type`
 -------------------------
 
 
@@ -76,4 +76,4 @@ This feature was primarily designed to support `SQLAlchemy ORM models <https://d
 
 
 .. seealso:: The section :ref:`SQLAlchemy Support` for more information on
-             how to use the ``__source_input_type`` attribute.
+             how to use the :ref:`source-input-type` attribute.
