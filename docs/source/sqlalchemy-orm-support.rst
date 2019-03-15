@@ -278,11 +278,12 @@ For consistency with code examples let's consider this is saved with
    }
 
 
-Service Implementation with Mappings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Service Implementation with Mappings of Mappings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
-   :emphasize-lines: 44, 52, 61
+   :linenos:
+   :emphasize-lines: 30-31, 41, 49, 58
 
    import grpc
 
@@ -293,17 +294,13 @@ Service Implementation with Mappings
        SinglePropertyMapping,
    )
    from google.protobuf.timestamp_pb2 import Timestamp
-   from google.protobuf.struct_pb2 import Struct
-   from google.protobuf import struct_pb2
 
    from . import social_platform_pb2
    from . import social_platform_pb2_grpc
    from . import sql
 
+
    ProtobufTimestamp = SinglePropertyMapping(int, Timestamp, 'seconds')
-
-
-   ProtobufValue = SinglePropertyMapping(dict, struct_pb2.Value, 'fields')
 
    class AuthRequestMapping(ProtoMapping):
        __proto__ = social_platform_pb2.AuthRequest
@@ -315,6 +312,7 @@ Service Implementation with Mappings
    class UserAuthTokenMapping(ProtoMapping):
        __proto__ = social_platform_pb2.User.AuthToken
        __source_input_type__ = sql.AuthToken
+
        value = ProtoKey('data', str)
        created_at = ProtoKey('created_at', ProtobufTimestamp)
        expires_at = ProtoKey('expires_at', ProtobufTimestamp)
