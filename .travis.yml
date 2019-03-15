@@ -18,16 +18,16 @@ install:
 # command to run tests
 script: make proto unit functional
 
-# automated pypi releases
-deploy:
-  provider: pypi
-  user: gabrielfalcao
-  password:
-    secure: E5KbnpQau7jv/mpHWAs19Y5zBaOHyBXRCGAsTS0S5lEOp/g8EEbjyt5rL7lcIeFAYarIds719BktC5iO+1AQbXOYicS5vDfiVRdLaJ5HPA4v6zyyQzwadFKSqE1Tv11AG9xkFDfBEPLTQmSrpI5cJIY5UoafDnMZe4CbLVETTw8=
-  on:
-    branch: master
-    tags: true
-  distributions: sdist bdist_wheel
+# # automated pypi releases
+# deploy:
+#   provider: pypi
+#   user: gabrielfalcao
+#   password:
+#     secure: E5KbnpQau7jv/mpHWAs19Y5zBaOHyBXRCGAsTS0S5lEOp/g8EEbjyt5rL7lcIeFAYarIds719BktC5iO+1AQbXOYicS5vDfiVRdLaJ5HPA4v6zyyQzwadFKSqE1Tv11AG9xkFDfBEPLTQmSrpI5cJIY5UoafDnMZe4CbLVETTw8=
+#   on:
+#     branch: master
+#     tags: true
+#   distributions: sdist bdist_wheel
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
