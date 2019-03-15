@@ -1,4 +1,5 @@
 import grpc
+from concurrent.futures import ThreadPoolExecutor
 
 from mercator import (
     ProtoMapping,
@@ -85,5 +86,7 @@ class MediaServicer(domain_pb2_grpc.MediaServicer):
         return MediaMapping(media).to_protobuf()
 
 
-server = grpc.server()
+server = grpc.server(
+    ThreadPoolExecutor(max_workers=10)
+)
 domain_pb2_grpc.add_MediaServicer_to_server(MediaServicer(), server)
