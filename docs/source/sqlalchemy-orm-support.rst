@@ -96,7 +96,7 @@ The service implementation
        __proto__ = domain_pb2.User
 
        # the base type of your sqlalchemy types
-       __source_input_type__ = MySimpleBaseModel
+       __source_input_type__ = sql.MySimpleBaseModel
 
        uuid = ProtoKey('id', str)    # translate "id" into "uuid"
        email = ProtoKey('email', str)
