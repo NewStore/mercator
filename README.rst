@@ -1,7 +1,7 @@
 Mercator - Data Mapper for Protobuf
 ===================================
 
-``version 0.0.5``
+``version 0.1.0``
 
 Python DSL to leverage translation of dictionaries and SQLAlchemy into Protobuf objects
 
