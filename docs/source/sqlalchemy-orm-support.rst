@@ -287,7 +287,7 @@ Service Implementation with Mappings of Mappings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
-   :emphasize-lines: 30-31, 41, 49, 58
+   :emphasize-lines: 31-32, 42, 50, 59
 
    import grpc
 
