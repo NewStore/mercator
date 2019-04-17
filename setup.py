@@ -36,6 +36,10 @@ def read_requirements():
     return local_file('requirements.txt').splitlines()
 
 
+def read_test_requirements():
+    return local_file('test_requirements.txt').splitlines()
+
+
 def read_readme():
     """Read README content.
     If the README.rst file does not exist yet
@@ -59,6 +63,7 @@ setup(
     url='https://mercator.readthedocs.io/en/latest/',
     download_url='https://github.com/NewStore/mercator/releases',
     packages=find_packages(exclude=['*tests*']),
+    test_require=read_test_requirements(),
     test_suite='nose.collector',
     version=read_version(),
     package_data={
