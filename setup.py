@@ -59,6 +59,7 @@ setup(
     include_package_data=True,
     install_requires=read_requirements(),
     long_description=read_readme(),
+    long_description_content_type='text/x-rst',
     name='mercator',
     url='https://mercator.readthedocs.io/en/latest/',
     download_url='https://github.com/NewStore/mercator/releases',

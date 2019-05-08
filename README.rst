@@ -151,7 +151,7 @@ Basic Usage
 Contributing
 ------------
 
-#. Check the `code structure documentation <CODE_STRUCTURE.rst>`_
+#. Check the `code structure documentation <https://github.com/NewStore/mercator/blob/master/CODE_STRUCTURE.rst>`_
 #. Write tests
 #. Write code
 #. Send a pull-request
