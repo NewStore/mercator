@@ -17,9 +17,10 @@ Mercator is a Python library that simplifies the following of
 serializing dictionary data into Protobuf binary data.
 
 Mercator actually supports extracting data from:
+
 - dictionaries
 - SQLAlchemy model instances
-- Any opaque python objects (e.g.: :py:class:`~collections.namedtuple`)
+- Any opaque python objects (e.g.: :py:func:`~collections.namedtuple`)
 
 
 When should I use Mercator ?
