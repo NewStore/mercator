@@ -96,7 +96,7 @@ you can modify your code locally and the changes will be available
 immediately.
 
 .. _make tests:
-n``make tests``
+``make tests``
 --------------
 
 Alias for the targets :ref:`make unit` and :ref:`make functional`
