@@ -19,6 +19,34 @@ Python DSL to leverage translation of dictionaries and SQLAlchemy into Protobuf 
    :alt: Test Coverage Reports
 
 
+What is Mercator ?
+------------------
+
+Mercator is a Python library that simplifies the following of
+serializing dictionary data into Protobuf binary data.
+
+Mercator actually supports extracting data from:
+- dictionaries
+- SQLAlchemy model instances
+- Any opaque python objects (e.g.: :py:class:`~collections.namedtuple`)
+
+
+When should I use Mercator ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- When migrating custom implementations of RPC to gGRPC.
+- When migrating in-memory data to Protobuf.
+
+
+When should I **not** use Mercator ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- When writing gRPC services from scratch.
+- When writing anything that uses Protobuf gets called.
+
+
+
 Install
 -------
 
