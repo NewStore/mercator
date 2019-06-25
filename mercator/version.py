@@ -3,4 +3,4 @@
 #
 # this file is part of the project "Mercator - Data Mapper for Protobuf" released under the "MIT" open-source license
 
-version = '0.1.8'
+version = '0.1.9'
