@@ -29,7 +29,7 @@ Mercator actually supports extracting data from:
 
 - dictionaries
 - SQLAlchemy model instances
-- Any opaque python objects (e.g.: :py:class:`~collections.namedtuple`)
+- Any opaque python objects (e.g.: ``collections.namedtuple``)
 
 
 When should I use Mercator ?

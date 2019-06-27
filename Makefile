@@ -34,6 +34,7 @@ release:
 
 pypi:
 	@pipenv run python setup.py build sdist
+	@pipenv run twine check dist/*.tar.gz
 	@pipenv run twine upload dist/*.tar.gz
 
 clean:
