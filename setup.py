@@ -68,12 +68,12 @@ setup(
     test_suite='nose.collector',
     version=read_version(),
     package_data={
-        'mercator': ' '.join([
+        'mercator': [
             '*.cfg',
             '*.py',
             '*.rst',
             '*.txt',
-        ]),
+        ],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
