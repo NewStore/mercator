@@ -121,10 +121,11 @@ class ProtoList(FieldMapping):
         :param value: a python object that is compatible with the given ``target_type``
         :returns: list of items target type coerced into the ``target_type``. Supports ProtoMappings by automatically calling :py:meth:`~mercator.ProtoMapping.to_protobuf`.
         """
-        result = super().cast(value)
-
-        if result is None:
+        if value is None:
             return
+
+        if self.target_type is None:
+            return value
 
         if not isinstance(value, (list, tuple)):
             raise TypeCastError(f'ProtoList.cast() received a non-list value '

@@ -66,3 +66,18 @@ def test_proto_list_native_type():
     t1, t2 = result
     t1.should.be.a(str)
     t2.should.be.a(str)
+
+
+def test_proto_list_int_type():
+    "ProtoList() should return a list of integers if target_type is int"
+
+    field = ProtoList('user_ids', int)
+    result = field.cast(['1', 2])
+
+    result.should.be.a(list)
+    result.should.have.length_of(2)
+    result.should.equal([1, 2])
+
+    t1, t2 = result
+    t1.should.be.a(int)
+    t2.should.be.a(int)
