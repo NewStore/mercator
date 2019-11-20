@@ -124,12 +124,12 @@ class ProtoList(FieldMapping):
         if value is None:
             return
 
-        if self.target_type is None:
-            return value
-
         if not isinstance(value, (list, tuple)):
             raise TypeCastError(f'ProtoList.cast() received a non-list value '
                                 f'(type {type(value).__name__}): {value}')
+
+        if self.target_type is None:
+            return value
 
         if issubclass(self.target_type, ProtoMapping):
             return [self.target_type(item).to_protobuf() for item in value]
