@@ -1,4 +1,4 @@
-grpcio-tools==1.26.0
-grpcio==1.26.0
+grpcio-tools<=1.26.0
+grpcio<=1.26.0
 protobuf==3.7.0
 requests==2.21.0
