@@ -3,11 +3,10 @@
 
 "Python DSL to leverage translation of dictionaries and SQLAlchemy into Protobuf objects"
 
-
 import ast
 import os
-from setuptools import setup, find_packages
 
+from setuptools import find_packages, setup
 
 local_file = lambda *f: open(os.path.join(os.path.dirname(__file__), *f)).read()
 
@@ -40,6 +39,10 @@ def read_test_requirements():
     return local_file('test_requirements.txt').splitlines()
 
 
+def read_dev_requirements():
+    return local_file('dev_requirements.txt').splitlines()
+
+
 def read_readme():
     """Read README content.
     If the README.rst file does not exist yet
@@ -58,6 +61,9 @@ setup(
     description=read_version(),
     include_package_data=True,
     install_requires=read_requirements(),
+    extras_require={
+        'dev': read_dev_requirements()
+    },
     long_description=read_readme(),
     long_description_content_type='text/x-rst',
     name='mercator',

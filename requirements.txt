@@ -2,5 +2,3 @@ grpcio-tools>=1.21.1
 grpcio>=1.21.1
 protobuf>=3.7.0
 requests>=2.21.0
-sphinx-rtd-theme>=0.4.3
-sphinx>=1.8.5
